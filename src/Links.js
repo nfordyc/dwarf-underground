@@ -13,17 +13,15 @@ class Links extends Component {
     }
 }
 
-class Link extends Component {
-    render(src,alt,text) {
-        return (
-            <div className="small-6 medium-3 columns other-article">
-              <a href="#">
-                <img src={this.props.src} alt={this.props.alt} />
-                <p>{this.props.text}</p>
-              </a> 
-            </div>
-        )
-    }
+function Link (props){
+    return (
+        <div className="small-6 medium-3 columns other-article">
+            <a href="#">
+            <img src={props.src} alt={props.alt} />
+            <p>{props.text}</p>
+            </a> 
+        </div>
+    )
 }
 
 export default Links
