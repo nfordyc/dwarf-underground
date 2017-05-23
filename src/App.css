@@ -138,6 +138,10 @@ aside {
   color: #666;
 }
 
+.comment {
+  margin: 0.5em;
+}
+
 .other-articles {
   border-top: 1px solid #ccc;
   background-color: rgba(207,181,59,.1);
