@@ -4,8 +4,12 @@ class Article extends Component {
     constructor () {
         super()
 
-        this.state = {commentsClicked: false}
+        this.state = {
+            commentsClicked: false,
+            comments: []
+        }
         this.showComments = this.showComments.bind(this)
+        this.submitComment = this.submitComment.bind(this)
     }
 
     showComments(e) {
@@ -13,6 +17,18 @@ class Article extends Component {
         this.setState((prevState) => ({
             commentsClicked: !prevState.commentsClicked
         }))
+    }
+
+    submitComment(e) {
+        e.preventDefault()
+        let comment = document.querySelector('.comment')
+        let newComments = this.state.comments
+        
+        newComments.push(comment.value)
+        comment.value = ''
+        this.showComments(e)
+        
+        this.setState({comments: newComments})
     }
 
     render() {
@@ -32,15 +48,18 @@ class Article extends Component {
                 <span className="article-link-text">Share Post</span>
               </a>
             </div>
-            <form>
-                <input 
-                    className="comment" 
-                    type="text" 
-                    style={{display: this.state.commentsClicked ? 'block' : 'none'}}/>
-                <input 
-                type="submit" 
-                style={{display: this.state.commentsClicked ? 'block' : 'none'}}/>
+            <form 
+                onSubmit={this.submitComment} 
+                style={{display: this.state.commentsClicked ? 'block' : 'none'}}
+            >
+                <input className="comment" type="text" />
+                <input type="submit" />
             </form>
+            <ul>
+                {this.state.comments.map(comment => {
+                    return <li>{comment}</li>
+                })}
+            </ul>
         </div>
         )
     }
