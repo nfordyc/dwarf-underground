@@ -5,8 +5,8 @@ class Links extends Component {
         return (
             <div className="small-12 columns other-articles">
             <h2>From around the Realm</h2>
-            {this.props.linkinfo.map(info => {
-                return <Link src={info.src} alt={info.alt} text={info.text} />
+            {this.props.linkinfo.map((info,i) => {
+                return <Link key={i} src={info.src} alt={info.alt} text={info.text} />
             })}
           </div>
         )

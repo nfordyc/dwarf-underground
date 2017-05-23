@@ -56,8 +56,8 @@ class Article extends Component {
                 <input type="submit" />
             </form>
             <ul>
-                {this.state.comments.map(comment => {
-                    return <li>{comment}</li>
+                {this.state.comments.map((comment,i) => {
+                    return <li key={i}>{comment}</li>
                 })}
             </ul>
         </div>
